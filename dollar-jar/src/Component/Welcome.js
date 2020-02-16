@@ -1,37 +1,34 @@
 import React, { Component} from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import UserComponent from './UserComponent';
+import '../App.css';
+import {Link} from "react-router-dom";
+
 export default class Welcome extends Component{
 
-state = {
-    userName: "",
-    redirect: false
-}
+    constructor(){
+        super();
+        this.state = {
+            userName: ""
+        }
+    }
 
-handleSubmit = (e) => {
-    const name = e.target.elements.uname.value;
-    console.log(name)
-
-    this.props.history.push('/add-user');
-
+changeInput = (e) =>{
+    const name = e.target.value;
     this.setState({
-        userName: name,
-        redirect: true
-    })
+        userName : name,
+    });
 }
 
 render() {
+    console.log(this.state.userName);
     return (
-        <div>
-            <div>
-            <form onSubmit={this.handleSubmit}>
-                <input type="text" placeholder="Enter Your Name" name="uname" />
+            <div className="App" >
+
+                <input type="text" value={this.state.userName} onChange={this.changeInput} name="uname"/>
                 <br />
-                <button type="submit">Submit</button>
-                </form>
-                <Route path="/add-user" component={UserComponent} />
+                <Link to = {{pathname: '/add-user', userName: this.state.userName}}> 
+                    <button>Submit</button>
+                </Link>
             </div>
-        </div>
     );
   }
 }

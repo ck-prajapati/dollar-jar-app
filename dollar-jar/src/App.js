@@ -10,7 +10,7 @@ render() {
     return (
           <Router>
             <Switch>
-                <Route exact path = "/" component={Welcome}/>
+                <Route exact path = "/" component={Welcome} key="reload"/>
                 <Route path = "/add-user" component={UserComponent} />
             </Switch>
           </Router>  

@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 
+
+const total = 0;
+
 export default class UserJarComponent extends Component {
 
     constructor(props){
         super(props)
         console.log(this.props);
         this.state = {
-            userData : {
-                uid : this.props.id,
-                name : this.props.userName,
-                balance : this.props.balance
-            },
+            uid : this.props.userData.id,
+            name : this.props.userData.userName,
+            balance : this.props.userData.balance,
             panalty: 10,
             total: 0
         }
